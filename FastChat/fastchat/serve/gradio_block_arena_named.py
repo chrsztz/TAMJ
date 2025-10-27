@@ -59,19 +59,19 @@ def load_demo_side_by_side_named(models, url_params):
         model_right = model_left
 
     selector_updates = (
-        gr.Dropdown.update(choices=models, value=model_left, visible=True),
-        gr.Dropdown.update(choices=models, value=model_right, visible=True),
+        gr.update(choices=models, value=model_left, visible=True),
+        gr.update(choices=models, value=model_right, visible=True),
     )
 
     return (
         states
         + selector_updates
-        + (gr.Chatbot.update(visible=True),) * num_sides
+        + (gr.update(visible=True),) * num_sides
         + (
-            gr.Textbox.update(visible=True),
-            gr.Box.update(visible=True),
-            gr.Row.update(visible=True),
-            gr.Accordion.update(visible=True),
+            gr.update(visible=True),
+            gr.update(visible=True),
+            gr.update(visible=True),
+            gr.update(visible=True),
         )
     )
 
@@ -325,7 +325,7 @@ By using this service, users are required to agree to the following terms: The s
         notice_markdown, elem_id="notice_markdown"
     )
 
-    with gr.Box(elem_id="share-region-named"):
+    with gr.Group(elem_id="share-region-named"):
         with gr.Row():
             for i in range(num_sides):
                 with gr.Column():
@@ -342,10 +342,10 @@ By using this service, users are required to agree to the following terms: The s
                 label = "Model A" if i == 0 else "Model B"
                 with gr.Column():
                     chatbots[i] = gr.Chatbot(
-                        label=label, elem_id=f"chatbot", visible=False, height=550
+                        label=label, elem_id=f"chatbot", visible=False, height=550, type='tuples'
                     )
 
-        # with gr.Box(visible=False) as button_row:
+        # with gr.Group(visible=False) as button_row:
         #     with gr.Row():
         #         leftvote_btn = gr.Button(value="👈  A is better", interactive=False, visible=False)
         #         rightvote_btn = gr.Button(value="👉  B is better", interactive=False, visible=False)
@@ -406,22 +406,22 @@ By using this service, users are required to agree to the following terms: The s
     # leftvote_btn.click(
     #     leftvote_last_response,
     #     states + model_selectors,
-    #     [textbox, leftvote_btn, rightvote_btn, tie_btn, bothbad_btn],
+    #     [textGroup, leftvote_btn, rightvote_btn, tie_btn, bothbad_btn],
     # )
     # rightvote_btn.click(
     #     rightvote_last_response,
     #     states + model_selectors,
-    #     [textbox, leftvote_btn, rightvote_btn, tie_btn, bothbad_btn],
+    #     [textGroup, leftvote_btn, rightvote_btn, tie_btn, bothbad_btn],
     # )
     # tie_btn.click(
     #     tievote_last_response,
     #     states + model_selectors,
-    #     [textbox, leftvote_btn, rightvote_btn, tie_btn, bothbad_btn],
+    #     [textGroup, leftvote_btn, rightvote_btn, tie_btn, bothbad_btn],
     # )
     # bothbad_btn.click(
     #     bothbad_vote_last_response,
     #     states + model_selectors,
-    #     [textbox, leftvote_btn, rightvote_btn, tie_btn, bothbad_btn],
+    #     [textGroup, leftvote_btn, rightvote_btn, tie_btn, bothbad_btn],
     # )
     regenerate_btn.click(
         regenerate, states, states + chatbots + [textbox] + btn_list
@@ -454,7 +454,7 @@ function (a, b, c, d) {
     return [a, b, c, d];
 }
 """
-    share_btn.click(share_click, states + model_selectors, [], _js=share_js)
+    share_btn.click(share_click, states + model_selectors, [], js=share_js)
 
     for i in range(num_sides):
         model_selectors[i].change(

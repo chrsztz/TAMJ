@@ -47,9 +47,10 @@ logger = build_logger("gradio_web_server", "gradio_web_server.log")
 
 headers = {"User-Agent": "FastChat Client"}
 
-no_change_btn = gr.Button.update()
-enable_btn = gr.Button.update(interactive=True)
-disable_btn = gr.Button.update(interactive=False)
+# Gradio 5.x compatible button states
+no_change_btn = gr.skip()
+enable_btn = gr.update(interactive=True)
+disable_btn = gr.update(interactive=False)
 
 controller_url = None
 enable_moderation = False
@@ -124,7 +125,7 @@ def load_demo_single(models, url_params):
         if model in models:
             selected_model = model
 
-    dropdown_update = gr.Dropdown.update(
+    dropdown_update = gr.update(
         choices=models, value=selected_model, visible=True
     )
 
@@ -132,11 +133,11 @@ def load_demo_single(models, url_params):
     return (
         state,
         dropdown_update,
-        gr.Chatbot.update(visible=True),
-        gr.Textbox.update(visible=True),
-        gr.Button.update(visible=True),
-        gr.Row.update(visible=True),
-        gr.Accordion.update(visible=True),
+        gr.update(visible=True),
+        gr.update(visible=True),
+        gr.update(visible=True),
+        gr.update(visible=True),
+        gr.update(visible=True),
     )
 
 
@@ -521,6 +522,7 @@ By using this service, users are required to agree to the following terms: The s
     chatbot = gr.Chatbot(
         elem_id="chatbot",
         label="Scroll down and start chatting",
+        type='tuples',
         visible=False,
         height=550,
     )
@@ -646,7 +648,7 @@ def build_demo(models):
                 button_row,
                 parameter_row,
             ],
-            _js=get_window_url_params_js,
+            js=get_window_url_params_js,
         )
 
     return demo

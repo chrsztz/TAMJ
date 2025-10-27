@@ -58,13 +58,13 @@ def load_demo_side_by_side_anony(models_, url_params):
     return (
         states
         + selector_updates
-        + (gr.Chatbot.update(visible=True),) * num_sides
+        + (gr.update(visible=True),) * num_sides
         + (
-            gr.Textbox.update(visible=True),
-            gr.Box.update(visible=True),
-            gr.Row.update(visible=True),
-            gr.Row.update(visible=True),
-            gr.Accordion.update(visible=True),
+            gr.update(visible=True),
+            gr.update(visible=True),
+            gr.update(visible=True),
+            gr.update(visible=True),
+            gr.update(visible=True),
         )
     )
 
@@ -390,7 +390,7 @@ Please scroll down and start chatting. The models include both closed-source mod
 
     gr.Markdown(notice_markdown, elem_id="notice_markdown")
 
-    with gr.Box(elem_id="share-region-anony"):
+    with gr.Group(elem_id="share-region-anony"):
         with gr.Row():
             for i in range(num_sides):
                 with gr.Column():
@@ -401,10 +401,10 @@ Please scroll down and start chatting. The models include both closed-source mod
                 label = "Model A" if i == 0 else "Model B"
                 with gr.Column():
                     chatbots[i] = gr.Chatbot(
-                        label=label, elem_id=f"chatbot", visible=False, height=550
+                        label=label, elem_id=f"chatbot", visible=False, height=550, type='tuples'
                     )
 
-        with gr.Box() as button_row:
+        with gr.Group() as button_row:
             with gr.Row():
                 leftvote_btn = gr.Button(value="👈  A is better", interactive=False)
                 rightvote_btn = gr.Button(value="👉  B is better", interactive=False)
@@ -517,7 +517,7 @@ function (a, b, c, d) {
     return [a, b, c, d];
 }
 """
-    share_btn.click(share_click, states + model_selectors, [], _js=share_js)
+    share_btn.click(share_click, states + model_selectors, [], js=share_js)
 
     textbox.submit(
         add_text,

@@ -35,14 +35,15 @@ class UI:
     the UI of frontend
     """
 
-    def __init__(self, task: str = ""):
+    def __init__(self, task: str = "llm_eval"):
         """
         init a UI.
         default number of students is 0
         """
         self.messages = []
         self.task = task
-        self.backend = AgentVerse.from_task("demo/science_team")
+        # AgentVerse.from_task 返回 (agentverse, agents, environments)
+        self.backend, _, _ = AgentVerse.from_task("agentverse/tasks/llm_eval/config.yaml")
         self.turns_remain = 0
         self.agent_id = {
             self.backend.agents[idx].name: idx
@@ -118,8 +119,8 @@ class UI:
     def stop_autoplay(self):
         self.autoplay = False
         return (
-            gr.Button.update(interactive=False),
-            gr.Button.update(interactive=False),
+            gr.update(interactive=False),
+            gr.update(interactive=False),
         )
 
     def start_autoplay(self, c_chatbot1, c_chatbot2):
@@ -134,9 +135,9 @@ class UI:
 
         yield (
             self.text_now,
-            gr.Button.update(interactive=False),
-            gr.Button.update(interactive=True),
-            gr.Button.update(interactive=False),
+            gr.update(interactive=False),
+            gr.update(interactive=True),
+            gr.update(interactive=False),
         )
 
         while self.autoplay and self.turns_remain > 0:
@@ -145,16 +146,16 @@ class UI:
 
             yield (
                 self.text_now,
-                gr.Button.update(interactive=self.autoplay and self.turns_remain > 0),
-                gr.Button.update(interactive=not self.autoplay and self.turns_remain > 0),
+                gr.update(interactive=self.autoplay and self.turns_remain > 0),
+                gr.update(interactive=not self.autoplay and self.turns_remain > 0),
             )
 
     def delay_gen_output(self):
 
         yield (
             self.text_now,
-            gr.Button.update(interactive=False),
-            gr.Button.update(interactive=False),
+            gr.update(interactive=False),
+            gr.update(interactive=False),
         )
 
         outputs = self.gen_output()
@@ -162,8 +163,8 @@ class UI:
 
         yield (
             self.text_now,
-            gr.Button.update(interactive=self.turns_remain > 0),
-            gr.Button.update(interactive=self.turns_remain > 0),
+            gr.update(interactive=self.turns_remain > 0),
+            gr.update(interactive=self.turns_remain > 0),
         )
 
     def delay_reset(self):
@@ -172,60 +173,25 @@ class UI:
 
         return (
             self.text_now,
-            gr.Button.update(interactive=False),
-            gr.Button.update(interactive=True),
+            gr.update(interactive=False),
+            gr.update(interactive=True),
         )
 
     def reset(self, stu_num=0):
         """
-        tell backend the new number of students and generate new empty image
+        Reset the referee backend
         :param stu_num:
         :return: [empty image, empty message]
         """
-        if not 0 <= stu_num <= 30:
-            raise gr.Error("the number of students must be between 0 and 30.")
-
-        """
-        # [To-Do] Need to add a function to assign agent numbers into the backend.
-        """
-        # self.backend.reset(stu_num)
-        # self.stu_num = stu_num
-
-        """
-        # [To-Do] Pass the parameters to reset
-        """
         self.backend.reset()
         self.turns_remain = self.backend.environment.max_turns
-
-        if self.task == "prisoner_dilemma":
-            background = cv2.imread("./imgs/prison/case_1.png")
-        elif self.task == "db_diag":
-            background = cv2.imread("./imgs/db_diag/background.png")
-        elif "sde" in self.task:
-            background = cv2.imread("./imgs/sde/background.png")
-        else:
-            background = cv2.imread("./imgs/background.png")
-            back_h, back_w, _ = background.shape
-            stu_cnt = 0
-            for h_begin, w_begin in itertools.product(
-                    range(800, back_h, 300), range(135, back_w - 200, 200)
-            ):
-                stu_cnt += 1
-                img = cv2.imread(
-                    f"./imgs/{(stu_cnt - 1) % 11 + 1 if stu_cnt <= self.stu_num else 'empty'}.png",
-                    cv2.IMREAD_UNCHANGED,
-                )
-                cover_img(
-                    background,
-                    img,
-                    (h_begin - 30 if img.shape[0] > 190 else h_begin, w_begin),
-                )
         self.messages = []
         self.solution_status = [False] * self.tot_solutions
+        
+        # Return empty placeholder instead of image
+        return [None, ""]
 
-        return [cv2.cvtColor(background, cv2.COLOR_BGR2RGB), ""]
-
-    def gen_img(self, data: List[Dict]):
+    def gen_img_placeholder(self, data: List[Dict]):
         """
         generate new image with sender rank
         :param data:
@@ -317,7 +283,7 @@ class UI:
 
     def gen_output(self):
         """
-        generate new image and message of next step
+        generate new message of next step
         :return: [new image, new message]
         """
 
@@ -325,18 +291,13 @@ class UI:
         return_message = self.backend.next()
         data = self.return_format(return_message)
 
-        # data.sort(key=lambda item: item["sender"])
-        """
-        # [To-Do]; Check the message from the backend: only 1 person can speak
-        """
-
         for item in data:
             if item["message"] not in ["", "[RaiseHand]"]:
                 self.messages.append((item["sender"], item["message"]))
 
         message = self.gen_message()
         self.turns_remain -= 1
-        return [self.gen_img(data), message]
+        return [None, message]
 
     def gen_message(self):
         # If the backend cannot handle this error, use the following code.
@@ -376,14 +337,14 @@ class UI:
         """
         self.backend.submit(message)
         self.messages.append((-1, f"[User]: {message}"))
-        return self.gen_img([{"message": ""}] * len(self.agent_id)), self.gen_message()
+        return None, self.gen_message()
 
     def launch(self, c_chatbots):
         """
         start a frontend
         """
 
-        with gr.Box():
+        with gr.Group():
             with gr.Row():
                 with gr.Column():
 
@@ -399,7 +360,7 @@ class UI:
                         )
                         start_autoplay_btn = gr.Button("Judge", interactive=False)
 
-                    with gr.Box():
+                    with gr.Group():
 
                         role_description = self.get_display_role_html()
                         _ = gr.HTML(role_description)

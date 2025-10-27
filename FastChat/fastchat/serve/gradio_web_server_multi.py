@@ -89,7 +89,7 @@ def load_demo(url_params, request: gr.Request):
     )
 
 
-def build_demo(models, elo_results_file, leaderboard_table_file):
+def build_demo(models, elo_results_file, leaderboard_table_file, args=None):
     with gr.Blocks(
         title="Chat with Open Large Language Models",
         theme=gr.themes.Base(),
@@ -181,8 +181,13 @@ def build_demo(models, elo_results_file, leaderboard_table_file):
         gr.Markdown(learn_more_md)
 
 
-        if args.model_list_mode not in ["once", "reload"]:
+        if args and hasattr(args, 'model_list_mode') and args.model_list_mode not in ["once", "reload"]:
             raise ValueError(f"Unknown model list mode: {args.model_list_mode}")
+        
+        if not args:
+            # Skip demo.load when args is None (for testing)
+            return demo
+            
         demo.load(
             load_demo,
             [url_params],
@@ -190,7 +195,7 @@ def build_demo(models, elo_results_file, leaderboard_table_file):
             # a_list +
             # b_list +
             c_list,
-            _js=get_window_url_params_js,
+            js=get_window_url_params_js,
         )
 
     return demo
@@ -277,7 +282,7 @@ if __name__ == "__main__":
     # Launch the demo
     demo = build_demo(models, args.elo_results_file, args.leaderboard_table_file)
     demo.queue(
-        concurrency_count=args.concurrency_count, status_update_rate=10, api_open=False
+    default_concurrency_limit=args.concurrency_count
     ).launch(
         server_name=args.host,
         server_port=args.port,
