@@ -252,19 +252,27 @@ def add_text(
             * 6
         )
 
-    if ip_expiration_dict[ip] < time.time():
-        logger.info(f"inactive (anony). ip: {request.client.host}. text: {text}")
-        for i in range(num_sides):
-            states[i].skip_next = True
-        return (
-            states
-            + [x.to_gradio_chatbot() for x in states]
-            + [INACTIVE_MSG]
-            + [
-                no_change_btn,
-            ]
-            * 6
-        )
+    # Update IP expiration time on every request
+    if ip not in ip_expiration_dict or ip_expiration_dict[ip] < time.time():
+        # Initialize or refresh the session
+        from fastchat.constants import SESSION_EXPIRATION_TIME
+        ip_expiration_dict[ip] = time.time() + SESSION_EXPIRATION_TIME
+        logger.info(f"session initialized/refreshed (anony). ip: {ip}")
+    
+    # Only check for very old sessions (legacy behavior, mostly disabled now)
+    # if ip_expiration_dict[ip] < time.time():
+    #     logger.info(f"inactive (anony). ip: {request.client.host}. text: {text}")
+    #     for i in range(num_sides):
+    #         states[i].skip_next = True
+    #     return (
+    #         states
+    #         + [x.to_gradio_chatbot() for x in states]
+    #         + [INACTIVE_MSG]
+    #         + [
+    #             no_change_btn,
+    #         ]
+    #         * 6
+    #     )
 
     if enable_moderation:
         flagged = violates_moderation(text)

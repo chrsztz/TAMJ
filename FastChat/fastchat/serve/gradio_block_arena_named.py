@@ -15,6 +15,7 @@ from fastchat.constants import (
     INACTIVE_MSG,
     INPUT_CHAR_LEN_LIMIT,
     CONVERSATION_TURN_LIMIT,
+    SESSION_EXPIRATION_TIME,
 )
 from fastchat.model.model_adapter import get_conversation_template
 from fastchat.serve.gradio_web_server import (
@@ -175,19 +176,26 @@ def add_text(
             * 6
         )
 
-    if ip_expiration_dict[ip] < time.time():
-        logger.info(f"inactive (named). ip: {request.client.host}. text: {text}")
-        for i in range(num_sides):
-            states[i].skip_next = True
-        return (
-            states
-            + [x.to_gradio_chatbot() for x in states]
-            + [INACTIVE_MSG]
-            + [
-                no_change_btn,
-            ]
-            * 6
-        )
+    # Update IP expiration time on every request
+    if ip not in ip_expiration_dict or ip_expiration_dict[ip] < time.time():
+        # Initialize or refresh the session
+        ip_expiration_dict[ip] = time.time() + SESSION_EXPIRATION_TIME
+        logger.info(f"session initialized/refreshed (named). ip: {ip}")
+    
+    # Only check for very old sessions (legacy behavior, mostly disabled now)
+    # if ip_expiration_dict[ip] < time.time():
+    #     logger.info(f"inactive (named). ip: {request.client.host}. text: {text}")
+    #     for i in range(num_sides):
+    #         states[i].skip_next = True
+    #     return (
+    #         states
+    #         + [x.to_gradio_chatbot() for x in states]
+    #         + [INACTIVE_MSG]
+    #         + [
+    #             no_change_btn,
+    #         ]
+    #         * 6
+    #     )
 
     if enable_moderation:
         flagged = violates_moderation(text)
@@ -342,7 +350,7 @@ By using this service, users are required to agree to the following terms: The s
                 label = "Model A" if i == 0 else "Model B"
                 with gr.Column():
                     chatbots[i] = gr.Chatbot(
-                        label=label, elem_id=f"chatbot", visible=False, height=550, type='tuples'
+                        label=label, elem_id=f"chatbot", visible=True, height=550, type='tuples'
                     )
 
         # with gr.Group(visible=False) as button_row:
@@ -357,11 +365,11 @@ By using this service, users are required to agree to the following terms: The s
             textbox = gr.Textbox(
                 show_label=False,
                 placeholder="Enter text and press ENTER",
-                visible=False,
+                visible=True,
                 container=False,
             )
         with gr.Column(scale=1, min_width=50):
-            send_btn = gr.Button(value="Send", visible=False)
+            send_btn = gr.Button(value="Send", visible=True)
 
     with gr.Row() as button_row2:
         regenerate_btn = gr.Button(value="🔄  Regenerate", interactive=False)

@@ -1,0 +1,5 @@
+---
+alwaysApply: true
+use the conda environment "tamj" for this whole project
+write all the information about the upgrade in code in UPGRADE_SUMMARY.md, do not create new markdown document.
+---

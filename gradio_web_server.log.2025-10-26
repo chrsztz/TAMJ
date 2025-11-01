@@ -1,0 +1,604 @@
+2025-10-26 22:22:45 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:22:45 | ERROR | stderr |   File "<string>", line 4, in <module>
+2025-10-26 22:22:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 29, in <module>
+2025-10-26 22:22:45 | ERROR | stderr |     from fastchat.serve.gradio_web_server import (
+2025-10-26 22:22:45 | ERROR | stderr | ImportError: cannot import name 'ip_expiration_dict' from 'fastchat.serve.gradio_web_server' (/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/fastchat/serve/gradio_web_server.py)
+2025-10-26 22:22:57 | INFO | stdout | gradio_web_server path: /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server.py
+2025-10-26 22:22:58 | INFO | stdout | ✓ All modules imported successfully
+2025-10-26 22:24:27 | INFO | stdout | ✓ gradio_web_server 导入成功
+2025-10-26 22:24:29 | INFO | stdout | ✓ gradio_block_arena_named 导入成功
+2025-10-26 22:24:29 | INFO | stdout | ✓ gradio_block_arena_referee 导入成功
+2025-10-26 22:24:29 | INFO | stdout | ✓ AgentVerse 导入成功
+2025-10-26 22:24:29 | INFO | stdout | ✓ Gradio 5.49.1 导入成功
+2025-10-26 22:24:29 | INFO | stdout | 
+2025-10-26 22:24:29 | INFO | stdout | ============================================================
+2025-10-26 22:24:29 | INFO | stdout | 测试 2: AgentVerse 初始化
+2025-10-26 22:24:29 | INFO | stdout | ============================================================
+2025-10-26 22:24:29 | INFO | stdout | ✗ AgentVerse 初始化失败: You should include config.yaml in your task config path
+2025-10-26 22:24:29 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:24:29 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_chateval_simple.py", line 51, in test_agentverse_initialization
+2025-10-26 22:24:29 | ERROR | stderr |     backend = AgentVerse.from_task("llm_eval")
+2025-10-26 22:24:29 | ERROR | stderr |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:24:29 | ERROR | stderr |   File "/Users/ztz/TAMJ/agentverse/agentverse.py", line 33, in from_task
+2025-10-26 22:24:29 | ERROR | stderr |     task_config = prepare_task_config(task)
+2025-10-26 22:24:29 | ERROR | stderr |                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:24:29 | ERROR | stderr |   File "/Users/ztz/TAMJ/agentverse/initialization.py", line 68, in prepare_task_config
+2025-10-26 22:24:29 | ERROR | stderr |     raise ValueError(
+2025-10-26 22:24:29 | ERROR | stderr | ValueError: You should include config.yaml in your task config path
+2025-10-26 22:24:29 | INFO | stdout | 
+2025-10-26 22:24:29 | INFO | stdout | ============================================================
+2025-10-26 22:24:29 | INFO | stdout | 测试 3: Referee UI 创建
+2025-10-26 22:24:29 | INFO | stdout | ============================================================
+2025-10-26 22:24:29 | INFO | stdout | ✗ Referee UI 创建失败: You should include config.yaml in your task config path
+2025-10-26 22:24:29 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:24:29 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_chateval_simple.py", line 75, in test_referee_ui
+2025-10-26 22:24:29 | ERROR | stderr |     ui = UI()
+2025-10-26 22:24:29 | ERROR | stderr |          ^^^^
+2025-10-26 22:24:29 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 45, in __init__
+2025-10-26 22:24:29 | ERROR | stderr |     self.backend = AgentVerse.from_task("demo/science_team")
+2025-10-26 22:24:29 | ERROR | stderr |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:24:29 | ERROR | stderr |   File "/Users/ztz/TAMJ/agentverse/agentverse.py", line 33, in from_task
+2025-10-26 22:24:29 | ERROR | stderr |     task_config = prepare_task_config(task)
+2025-10-26 22:24:29 | ERROR | stderr |                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:24:29 | ERROR | stderr |   File "/Users/ztz/TAMJ/agentverse/initialization.py", line 68, in prepare_task_config
+2025-10-26 22:24:29 | ERROR | stderr |     raise ValueError(
+2025-10-26 22:24:29 | ERROR | stderr | ValueError: You should include config.yaml in your task config path
+2025-10-26 22:24:29 | INFO | stdout | 
+2025-10-26 22:24:29 | INFO | stdout | ============================================================
+2025-10-26 22:24:29 | INFO | stdout | 测试 4: Gradio 5.x API 兼容性
+2025-10-26 22:24:29 | INFO | stdout | ============================================================
+2025-10-26 22:24:29 | INFO | stdout | ✓ gr.update() 工作正常
+2025-10-26 22:24:29 | INFO | stdout | ✓ gr.skip() 工作正常
+2025-10-26 22:24:29 | INFO | stdout | ✓ gr.Button.update() 已正确移除 (符合 Gradio 5.x)
+2025-10-26 22:24:29 | INFO | stdout | 
+2025-10-26 22:24:29 | INFO | stdout | ============================================================
+2025-10-26 22:24:29 | INFO | stdout | 测试总结
+2025-10-26 22:24:29 | INFO | stdout | ============================================================
+2025-10-26 22:24:29 | INFO | stdout | 模块导入: ✓ 通过
+2025-10-26 22:24:29 | INFO | stdout | AgentVerse 初始化: ✗ 失败
+2025-10-26 22:24:29 | INFO | stdout | Referee UI: ✗ 失败
+2025-10-26 22:24:29 | INFO | stdout | Gradio 兼容性: ✓ 通过
+2025-10-26 22:24:29 | INFO | stdout | 
+2025-10-26 22:24:29 | INFO | stdout | 总计: 2/4 测试通过
+2025-10-26 22:24:29 | INFO | stdout | 
+2025-10-26 22:24:29 | INFO | stdout | ❌ 部分测试失败，请检查错误信息。
+2025-10-26 22:24:44 | INFO | stdout | ✓ gradio_web_server 导入成功
+2025-10-26 22:24:45 | INFO | stdout | ✓ gradio_block_arena_named 导入成功
+2025-10-26 22:24:45 | INFO | stdout | ✓ gradio_block_arena_referee 导入成功
+2025-10-26 22:24:45 | INFO | stdout | ✓ AgentVerse 导入成功
+2025-10-26 22:24:45 | INFO | stdout | ✓ Gradio 5.49.1 导入成功
+2025-10-26 22:24:45 | INFO | stdout | 
+2025-10-26 22:24:45 | INFO | stdout | ============================================================
+2025-10-26 22:24:45 | INFO | stdout | 测试 2: AgentVerse 初始化
+2025-10-26 22:24:45 | INFO | stdout | ============================================================
+2025-10-26 22:24:45 | INFO | stdout | ✗ AgentVerse 初始化失败: You should include config.yaml in your task config path
+2025-10-26 22:24:45 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:24:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_chateval_simple.py", line 51, in test_agentverse_initialization
+2025-10-26 22:24:45 | ERROR | stderr |     backend = AgentVerse.from_task("llm_eval")
+2025-10-26 22:24:45 | ERROR | stderr |               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:24:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/agentverse/agentverse.py", line 33, in from_task
+2025-10-26 22:24:45 | ERROR | stderr |     task_config = prepare_task_config(task)
+2025-10-26 22:24:45 | ERROR | stderr |                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:24:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/agentverse/initialization.py", line 68, in prepare_task_config
+2025-10-26 22:24:45 | ERROR | stderr |     raise ValueError(
+2025-10-26 22:24:45 | ERROR | stderr | ValueError: You should include config.yaml in your task config path
+2025-10-26 22:24:45 | INFO | stdout | 
+2025-10-26 22:24:45 | INFO | stdout | ============================================================
+2025-10-26 22:24:45 | INFO | stdout | 测试 3: Referee UI 创建
+2025-10-26 22:24:45 | INFO | stdout | ============================================================
+2025-10-26 22:24:45 | INFO | stdout | ✗ Referee UI 创建失败: You should include the config.yaml file in the task directory
+2025-10-26 22:24:45 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:24:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_chateval_simple.py", line 75, in test_referee_ui
+2025-10-26 22:24:45 | ERROR | stderr |     ui = UI()
+2025-10-26 22:24:45 | ERROR | stderr |          ^^^^
+2025-10-26 22:24:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 45, in __init__
+2025-10-26 22:24:45 | ERROR | stderr |     self.backend = AgentVerse.from_task("llm_eval/config.yaml")
+2025-10-26 22:24:45 | ERROR | stderr |                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:24:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/agentverse/agentverse.py", line 33, in from_task
+2025-10-26 22:24:45 | ERROR | stderr |     task_config = prepare_task_config(task)
+2025-10-26 22:24:45 | ERROR | stderr |                   ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:24:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/agentverse/initialization.py", line 73, in prepare_task_config
+2025-10-26 22:24:45 | ERROR | stderr |     raise ValueError(
+2025-10-26 22:24:45 | ERROR | stderr | ValueError: You should include the config.yaml file in the task directory
+2025-10-26 22:24:45 | INFO | stdout | 
+2025-10-26 22:24:45 | INFO | stdout | ============================================================
+2025-10-26 22:24:45 | INFO | stdout | 测试 4: Gradio 5.x API 兼容性
+2025-10-26 22:24:45 | INFO | stdout | ============================================================
+2025-10-26 22:24:45 | INFO | stdout | ✓ gr.update() 工作正常
+2025-10-26 22:24:45 | INFO | stdout | ✓ gr.skip() 工作正常
+2025-10-26 22:24:45 | INFO | stdout | ✓ gr.Button.update() 已正确移除 (符合 Gradio 5.x)
+2025-10-26 22:24:45 | INFO | stdout | 
+2025-10-26 22:24:45 | INFO | stdout | ============================================================
+2025-10-26 22:24:45 | INFO | stdout | 测试总结
+2025-10-26 22:24:45 | INFO | stdout | ============================================================
+2025-10-26 22:24:45 | INFO | stdout | 模块导入: ✓ 通过
+2025-10-26 22:24:45 | INFO | stdout | AgentVerse 初始化: ✗ 失败
+2025-10-26 22:24:45 | INFO | stdout | Referee UI: ✗ 失败
+2025-10-26 22:24:45 | INFO | stdout | Gradio 兼容性: ✓ 通过
+2025-10-26 22:24:45 | INFO | stdout | 
+2025-10-26 22:24:45 | INFO | stdout | 总计: 2/4 测试通过
+2025-10-26 22:24:45 | INFO | stdout | 
+2025-10-26 22:24:45 | INFO | stdout | ❌ 部分测试失败，请检查错误信息。
+2025-10-26 22:25:01 | INFO | stdout | ✓ gradio_web_server 导入成功
+2025-10-26 22:25:02 | INFO | stdout | ✓ gradio_block_arena_named 导入成功
+2025-10-26 22:25:02 | INFO | stdout | ✓ gradio_block_arena_referee 导入成功
+2025-10-26 22:25:02 | INFO | stdout | ✓ AgentVerse 导入成功
+2025-10-26 22:25:02 | INFO | stdout | ✓ Gradio 5.49.1 导入成功
+2025-10-26 22:25:02 | INFO | stdout | 
+2025-10-26 22:25:02 | INFO | stdout | ============================================================
+2025-10-26 22:25:02 | INFO | stdout | 测试 2: AgentVerse 初始化
+2025-10-26 22:25:02 | INFO | stdout | ============================================================
+2025-10-26 22:25:02 | INFO | stdout | ✓ AgentVerse 初始化成功
+2025-10-26 22:25:02 | INFO | stdout | ✗ AgentVerse 初始化失败: 'tuple' object has no attribute 'agents'
+2025-10-26 22:25:02 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:25:02 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_chateval_simple.py", line 53, in test_agentverse_initialization
+2025-10-26 22:25:02 | ERROR | stderr |     print(f"  - 代理数量: {len(backend.agents)}")
+2025-10-26 22:25:02 | ERROR | stderr |                                ^^^^^^^^^^^^^^
+2025-10-26 22:25:02 | ERROR | stderr | AttributeError: 'tuple' object has no attribute 'agents'
+2025-10-26 22:25:02 | INFO | stdout | 
+2025-10-26 22:25:02 | INFO | stdout | ============================================================
+2025-10-26 22:25:02 | INFO | stdout | 测试 3: Referee UI 创建
+2025-10-26 22:25:02 | INFO | stdout | ============================================================
+2025-10-26 22:25:02 | INFO | stdout | ✗ Referee UI 创建失败: 'tuple' object has no attribute 'agents'
+2025-10-26 22:25:02 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:25:02 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_chateval_simple.py", line 75, in test_referee_ui
+2025-10-26 22:25:02 | ERROR | stderr |     ui = UI()
+2025-10-26 22:25:02 | ERROR | stderr |          ^^^^
+2025-10-26 22:25:02 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 49, in __init__
+2025-10-26 22:25:02 | ERROR | stderr |     for idx in range(len(self.backend.agents))
+2025-10-26 22:25:02 | ERROR | stderr |                          ^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:25:02 | ERROR | stderr | AttributeError: 'tuple' object has no attribute 'agents'
+2025-10-26 22:25:02 | INFO | stdout | 
+2025-10-26 22:25:02 | INFO | stdout | ============================================================
+2025-10-26 22:25:02 | INFO | stdout | 测试 4: Gradio 5.x API 兼容性
+2025-10-26 22:25:02 | INFO | stdout | ============================================================
+2025-10-26 22:25:02 | INFO | stdout | ✓ gr.update() 工作正常
+2025-10-26 22:25:02 | INFO | stdout | ✓ gr.skip() 工作正常
+2025-10-26 22:25:02 | INFO | stdout | ✓ gr.Button.update() 已正确移除 (符合 Gradio 5.x)
+2025-10-26 22:25:02 | INFO | stdout | 
+2025-10-26 22:25:02 | INFO | stdout | ============================================================
+2025-10-26 22:25:02 | INFO | stdout | 测试总结
+2025-10-26 22:25:02 | INFO | stdout | ============================================================
+2025-10-26 22:25:02 | INFO | stdout | 模块导入: ✓ 通过
+2025-10-26 22:25:02 | INFO | stdout | AgentVerse 初始化: ✗ 失败
+2025-10-26 22:25:02 | INFO | stdout | Referee UI: ✗ 失败
+2025-10-26 22:25:02 | INFO | stdout | Gradio 兼容性: ✓ 通过
+2025-10-26 22:25:02 | INFO | stdout | 
+2025-10-26 22:25:02 | INFO | stdout | 总计: 2/4 测试通过
+2025-10-26 22:25:02 | INFO | stdout | 
+2025-10-26 22:25:02 | INFO | stdout | ❌ 部分测试失败，请检查错误信息。
+2025-10-26 22:25:21 | INFO | stdout | ✓ gradio_web_server 导入成功
+2025-10-26 22:25:22 | INFO | stdout | ✓ gradio_block_arena_named 导入成功
+2025-10-26 22:25:22 | INFO | stdout | ✓ gradio_block_arena_referee 导入成功
+2025-10-26 22:25:22 | INFO | stdout | ✓ AgentVerse 导入成功
+2025-10-26 22:25:22 | INFO | stdout | ✓ Gradio 5.49.1 导入成功
+2025-10-26 22:25:22 | INFO | stdout | 
+2025-10-26 22:25:22 | INFO | stdout | ============================================================
+2025-10-26 22:25:22 | INFO | stdout | 测试 2: AgentVerse 初始化
+2025-10-26 22:25:22 | INFO | stdout | ============================================================
+2025-10-26 22:25:22 | INFO | stdout | ✓ AgentVerse 初始化成功
+2025-10-26 22:25:22 | INFO | stdout |   - 代理数量: 2
+2025-10-26 22:25:22 | INFO | stdout |   - Agent 1: General Public
+2025-10-26 22:25:22 | INFO | stdout |     角色: You are now General Public, one of the referees in...
+2025-10-26 22:25:22 | INFO | stdout |   - Agent 2: Critic
+2025-10-26 22:25:22 | INFO | stdout |     角色: You are now Critic, one of the referees in this ta...
+2025-10-26 22:25:22 | INFO | stdout | 
+2025-10-26 22:25:22 | INFO | stdout | ============================================================
+2025-10-26 22:25:22 | INFO | stdout | 测试 3: Referee UI 创建
+2025-10-26 22:25:22 | INFO | stdout | ============================================================
+2025-10-26 22:25:22 | INFO | stdout | ✓ Referee UI 创建成功
+2025-10-26 22:25:22 | INFO | stdout |   - Backend 类型: AgentVerse
+2025-10-26 22:25:22 | INFO | stdout |   - 代理数量: 2
+2025-10-26 22:25:22 | INFO | stdout | 
+2025-10-26 22:25:22 | INFO | stdout | ============================================================
+2025-10-26 22:25:22 | INFO | stdout | 测试 4: Gradio 5.x API 兼容性
+2025-10-26 22:25:22 | INFO | stdout | ============================================================
+2025-10-26 22:25:22 | INFO | stdout | ✓ gr.update() 工作正常
+2025-10-26 22:25:22 | INFO | stdout | ✓ gr.skip() 工作正常
+2025-10-26 22:25:22 | INFO | stdout | ✓ gr.Button.update() 已正确移除 (符合 Gradio 5.x)
+2025-10-26 22:25:22 | INFO | stdout | 
+2025-10-26 22:25:22 | INFO | stdout | ============================================================
+2025-10-26 22:25:22 | INFO | stdout | 测试总结
+2025-10-26 22:25:22 | INFO | stdout | ============================================================
+2025-10-26 22:25:22 | INFO | stdout | 模块导入: ✓ 通过
+2025-10-26 22:25:22 | INFO | stdout | AgentVerse 初始化: ✓ 通过
+2025-10-26 22:25:22 | INFO | stdout | Referee UI: ✓ 通过
+2025-10-26 22:25:22 | INFO | stdout | Gradio 兼容性: ✓ 通过
+2025-10-26 22:25:22 | INFO | stdout | 
+2025-10-26 22:25:22 | INFO | stdout | 总计: 4/4 测试通过
+2025-10-26 22:25:22 | INFO | stdout | 
+2025-10-26 22:25:22 | INFO | stdout | 🎉 所有测试通过！ChatEval 已准备就绪。
+2025-10-26 22:25:22 | INFO | stdout | 
+2025-10-26 22:25:22 | INFO | stdout | 下一步:
+2025-10-26 22:25:22 | INFO | stdout | 1. 启动 Controller: python -m fastchat.serve.controller
+2025-10-26 22:25:22 | INFO | stdout | 2. 启动 Model Workers
+2025-10-26 22:25:22 | INFO | stdout | 3. 启动 Web Server: python -m fastchat.serve.gradio_web_server_multi
+2025-10-26 22:25:22 | INFO | stdout | 
+2025-10-26 22:25:22 | INFO | stdout | 或者运行: ./start_chateval_arena.sh
+2025-10-26 22:33:00 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:33:00 | ERROR | stderr |   File "<frozen runpy>", line 198, in _run_module_as_main
+2025-10-26 22:33:00 | ERROR | stderr |   File "<frozen runpy>", line 88, in _run_code
+2025-10-26 22:33:00 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/fastchat/serve/gradio_web_server_multi.py", line 242, in <module>
+2025-10-26 22:33:00 | ERROR | stderr |     models, all_models = get_model_list(
+2025-10-26 22:33:00 | ERROR | stderr |                          ^^^^^^^^^^^^^^^
+2025-10-26 22:33:00 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/fastchat/serve/gradio_web_server.py", line 141, in get_model_list
+2025-10-26 22:33:00 | ERROR | stderr |     models = ret.json()["models"]
+2025-10-26 22:33:00 | ERROR | stderr |              ~~~~~~~~~~^^^^^^^^^^
+2025-10-26 22:33:00 | ERROR | stderr | KeyError: 'models'
+2025-10-26 22:35:45 | INFO | gradio_web_server | Models: ['ChatMusician', 'fastchat-t5-3b-v1.0']
+2025-10-26 22:35:45 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:35:45 | ERROR | stderr |   File "<frozen runpy>", line 198, in _run_module_as_main
+2025-10-26 22:35:45 | ERROR | stderr |   File "<frozen runpy>", line 88, in _run_code
+2025-10-26 22:35:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 278, in <module>
+2025-10-26 22:35:45 | ERROR | stderr |     demo = build_demo(models, args.elo_results_file, args.leaderboard_table_file)
+2025-10-26 22:35:45 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:35:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 151, in build_demo
+2025-10-26 22:35:45 | ERROR | stderr |     ) = build_side_by_side_ui_named(models)
+2025-10-26 22:35:45 | ERROR | stderr |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:35:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py", line 328, in build_side_by_side_ui_named
+2025-10-26 22:35:45 | ERROR | stderr |     with gr.Box(elem_id="share-region-named"):
+2025-10-26 22:35:45 | ERROR | stderr |          ^^^^^^
+2025-10-26 22:35:45 | ERROR | stderr | AttributeError: module 'gradio' has no attribute 'Box'
+2025-10-26 22:37:23 | INFO | gradio_web_server | Models: ['ChatMusician', 'fastchat-t5-3b-v1.0']
+2025-10-26 22:37:23 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:37:23 | ERROR | stderr |   File "<frozen runpy>", line 198, in _run_module_as_main
+2025-10-26 22:37:23 | ERROR | stderr |   File "<frozen runpy>", line 88, in _run_code
+2025-10-26 22:37:23 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 278, in <module>
+2025-10-26 22:37:23 | ERROR | stderr |     demo = build_demo(models, args.elo_results_file, args.leaderboard_table_file)
+2025-10-26 22:37:23 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:37:23 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 151, in build_demo
+2025-10-26 22:37:23 | ERROR | stderr |     ) = build_side_by_side_ui_named(models)
+2025-10-26 22:37:23 | ERROR | stderr |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:37:23 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py", line 328, in build_side_by_side_ui_named
+2025-10-26 22:37:23 | ERROR | stderr |     with gr.Box(elem_id="share-region-named"):
+2025-10-26 22:37:23 | ERROR | stderr |          ^^^^^^
+2025-10-26 22:37:23 | ERROR | stderr | AttributeError: module 'gradio' has no attribute 'Box'
+2025-10-26 22:38:03 | INFO | gradio_web_server | Models: ['ChatMusician', 'fastchat-t5-3b-v1.0']
+2025-10-26 22:38:03 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: You have not specified a value for the `type` parameter. Defaulting to the 'tuples' format for chatbot messages, but this is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style dictionaries with 'role' and 'content' keys.
+2025-10-26 22:38:03 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:38:03 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:38:03 | ERROR | stderr |   File "<frozen runpy>", line 198, in _run_module_as_main
+2025-10-26 22:38:03 | ERROR | stderr |   File "<frozen runpy>", line 88, in _run_code
+2025-10-26 22:38:03 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 278, in <module>
+2025-10-26 22:38:03 | ERROR | stderr |     demo = build_demo(models, args.elo_results_file, args.leaderboard_table_file)
+2025-10-26 22:38:03 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:38:03 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 151, in build_demo
+2025-10-26 22:38:03 | ERROR | stderr |     ) = build_side_by_side_ui_named(models)
+2025-10-26 22:38:03 | ERROR | stderr |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:38:03 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py", line 357, in build_side_by_side_ui_named
+2025-10-26 22:38:03 | ERROR | stderr |     textGroup = gr.TextGroup(
+2025-10-26 22:38:03 | ERROR | stderr |                 ^^^^^^^^^^^^
+2025-10-26 22:38:03 | ERROR | stderr | AttributeError: module 'gradio' has no attribute 'TextGroup'
+2025-10-26 22:40:45 | INFO | stdout |    ✓ 成功
+2025-10-26 22:40:45 | INFO | stdout | 
+2025-10-26 22:40:45 | INFO | stdout | 2. 导入 gradio_block_arena_named...
+2025-10-26 22:40:45 | INFO | stdout |    ✓ 成功
+2025-10-26 22:40:45 | INFO | stdout | 
+2025-10-26 22:40:45 | INFO | stdout | 3. 导入 gradio_block_arena_anony...
+2025-10-26 22:40:45 | INFO | stdout |    ✓ 成功
+2025-10-26 22:40:45 | INFO | stdout | 
+2025-10-26 22:40:45 | INFO | stdout | 4. 导入 gradio_block_arena_referee...
+2025-10-26 22:40:46 | INFO | stdout |    ✓ 成功
+2025-10-26 22:40:46 | INFO | stdout | 
+2025-10-26 22:40:46 | INFO | stdout | 5. 测试 build_demo 创建界面...
+2025-10-26 22:40:46 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:40:46 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:40:46 | INFO | stdout | 
+2025-10-26 22:40:46 | INFO | stdout | ✗ 测试失败: name 'textGroup' is not defined
+2025-10-26 22:40:46 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:40:46 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_gradio_fixes.py", line 32, in <module>
+2025-10-26 22:40:46 | ERROR | stderr |     demo = build_demo(models, None, None)
+2025-10-26 22:40:46 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:40:46 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 151, in build_demo
+2025-10-26 22:40:46 | ERROR | stderr |     ) = build_side_by_side_ui_named(models)
+2025-10-26 22:40:46 | ERROR | stderr |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:40:46 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py", line 427, in build_side_by_side_ui_named
+2025-10-26 22:40:46 | ERROR | stderr |     regenerate, states, states + chatbots + [textGroup] + btn_list
+2025-10-26 22:40:46 | ERROR | stderr |                                              ^^^^^^^^^
+2025-10-26 22:40:46 | ERROR | stderr | NameError: name 'textGroup' is not defined
+2025-10-26 22:41:03 | INFO | stdout |    ✓ 成功
+2025-10-26 22:41:03 | INFO | stdout | 
+2025-10-26 22:41:03 | INFO | stdout | 2. 导入 gradio_block_arena_named...
+2025-10-26 22:41:03 | INFO | stdout |    ✓ 成功
+2025-10-26 22:41:03 | INFO | stdout | 
+2025-10-26 22:41:03 | INFO | stdout | 3. 导入 gradio_block_arena_anony...
+2025-10-26 22:41:03 | INFO | stdout |    ✓ 成功
+2025-10-26 22:41:03 | INFO | stdout | 
+2025-10-26 22:41:03 | INFO | stdout | 4. 导入 gradio_block_arena_referee...
+2025-10-26 22:41:03 | INFO | stdout |    ✓ 成功
+2025-10-26 22:41:03 | INFO | stdout | 
+2025-10-26 22:41:03 | INFO | stdout | 5. 测试 build_demo 创建界面...
+2025-10-26 22:41:03 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:41:03 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:41:03 | INFO | stdout | 
+2025-10-26 22:41:03 | INFO | stdout | ✗ 测试失败: name 'textGroup' is not defined
+2025-10-26 22:41:03 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:41:03 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_gradio_fixes.py", line 32, in <module>
+2025-10-26 22:41:03 | ERROR | stderr |     demo = build_demo(models, None, None)
+2025-10-26 22:41:03 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:41:03 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 151, in build_demo
+2025-10-26 22:41:03 | ERROR | stderr |     ) = build_side_by_side_ui_named(models)
+2025-10-26 22:41:03 | ERROR | stderr |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:41:03 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py", line 435, in build_side_by_side_ui_named
+2025-10-26 22:41:03 | ERROR | stderr |     clear_btn.click(clear_history, None, states + chatbots + [textGroup] + btn_list)
+2025-10-26 22:41:03 | ERROR | stderr |                                                               ^^^^^^^^^
+2025-10-26 22:41:03 | ERROR | stderr | NameError: name 'textGroup' is not defined
+2025-10-26 22:41:33 | INFO | stdout |    ✓ 成功
+2025-10-26 22:41:33 | INFO | stdout | 
+2025-10-26 22:41:33 | INFO | stdout | 2. 导入 gradio_block_arena_named...
+2025-10-26 22:41:33 | INFO | stdout |    ✓ 成功
+2025-10-26 22:41:33 | INFO | stdout | 
+2025-10-26 22:41:33 | INFO | stdout | 3. 导入 gradio_block_arena_anony...
+2025-10-26 22:41:33 | INFO | stdout |    ✓ 成功
+2025-10-26 22:41:33 | INFO | stdout | 
+2025-10-26 22:41:33 | INFO | stdout | 4. 导入 gradio_block_arena_referee...
+2025-10-26 22:41:33 | INFO | stdout |    ✓ 成功
+2025-10-26 22:41:33 | INFO | stdout | 
+2025-10-26 22:41:33 | INFO | stdout | 5. 测试 build_demo 创建界面...
+2025-10-26 22:41:33 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:41:33 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:41:33 | INFO | stdout | 
+2025-10-26 22:41:33 | INFO | stdout | ✗ 测试失败: EventListener._setup.<locals>.event_trigger() got an unexpected keyword argument '_js'
+2025-10-26 22:41:33 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:41:33 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_gradio_fixes.py", line 32, in <module>
+2025-10-26 22:41:33 | ERROR | stderr |     demo = build_demo(models, None, None)
+2025-10-26 22:41:33 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:41:33 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 151, in build_demo
+2025-10-26 22:41:33 | ERROR | stderr |     ) = build_side_by_side_ui_named(models)
+2025-10-26 22:41:33 | ERROR | stderr |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:41:33 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py", line 457, in build_side_by_side_ui_named
+2025-10-26 22:41:33 | ERROR | stderr |     share_btn.click(share_click, states + model_selectors, [], _js=share_js)
+2025-10-26 22:41:33 | ERROR | stderr | TypeError: EventListener._setup.<locals>.event_trigger() got an unexpected keyword argument '_js'
+2025-10-26 22:42:19 | INFO | stdout |    ✓ 成功
+2025-10-26 22:42:19 | INFO | stdout | 
+2025-10-26 22:42:19 | INFO | stdout | 2. 导入 gradio_block_arena_named...
+2025-10-26 22:42:19 | INFO | stdout |    ✓ 成功
+2025-10-26 22:42:19 | INFO | stdout | 
+2025-10-26 22:42:19 | INFO | stdout | 3. 导入 gradio_block_arena_anony...
+2025-10-26 22:42:19 | INFO | stdout |    ✓ 成功
+2025-10-26 22:42:19 | INFO | stdout | 
+2025-10-26 22:42:19 | INFO | stdout | 4. 导入 gradio_block_arena_referee...
+2025-10-26 22:42:19 | INFO | stdout |    ✓ 成功
+2025-10-26 22:42:19 | INFO | stdout | 
+2025-10-26 22:42:19 | INFO | stdout | 5. 测试 build_demo 创建界面...
+2025-10-26 22:42:19 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:42:19 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:42:19 | INFO | stdout | 
+2025-10-26 22:42:19 | INFO | stdout | ✗ 测试失败: OpenCV(4.12.0) /Users/xperience/GHA-Actions-OpenCV/_work/opencv-python/opencv-python/opencv/modules/imgcodecs/src/loadsave.cpp:1596: error: (-215:Assertion failed) !_img.empty() in function 'imencodeWithMetadata'
+2025-10-26 22:42:19 | INFO | stdout | 
+2025-10-26 22:42:19 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:42:19 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_gradio_fixes.py", line 32, in <module>
+2025-10-26 22:42:19 | ERROR | stderr |     demo = build_demo(models, None, None)
+2025-10-26 22:42:19 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:42:19 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 167, in build_demo
+2025-10-26 22:42:19 | ERROR | stderr |     referee_block.launch(c_chatbots)
+2025-10-26 22:42:19 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 405, in launch
+2025-10-26 22:42:19 | ERROR | stderr |     role_description = self.get_display_role_html()
+2025-10-26 22:42:19 | ERROR | stderr |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:42:19 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 77, in get_display_role_html
+2025-10-26 22:42:19 | ERROR | stderr |     avatar = self.get_avatar(agent_id)
+2025-10-26 22:42:19 | ERROR | stderr |              ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:42:19 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 116, in get_avatar
+2025-10-26 22:42:19 | ERROR | stderr |     base64_str = cv2.imencode(".png", img)[1].tostring()
+2025-10-26 22:42:19 | ERROR | stderr |                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:42:19 | ERROR | stderr | cv2.error: OpenCV(4.12.0) /Users/xperience/GHA-Actions-OpenCV/_work/opencv-python/opencv-python/opencv/modules/imgcodecs/src/loadsave.cpp:1596: error: (-215:Assertion failed) !_img.empty() in function 'imencodeWithMetadata'
+2025-10-26 22:42:19 | ERROR | stderr | 
+2025-10-26 22:42:44 | INFO | stdout |    ✓ 成功
+2025-10-26 22:42:44 | INFO | stdout | 
+2025-10-26 22:42:44 | INFO | stdout | 2. 导入 gradio_block_arena_named...
+2025-10-26 22:42:44 | INFO | stdout |    ✓ 成功
+2025-10-26 22:42:44 | INFO | stdout | 
+2025-10-26 22:42:44 | INFO | stdout | 3. 导入 gradio_block_arena_anony...
+2025-10-26 22:42:44 | INFO | stdout |    ✓ 成功
+2025-10-26 22:42:44 | INFO | stdout | 
+2025-10-26 22:42:44 | INFO | stdout | 4. 导入 gradio_block_arena_referee...
+2025-10-26 22:42:44 | INFO | stdout |    ✓ 成功
+2025-10-26 22:42:44 | INFO | stdout | 
+2025-10-26 22:42:44 | INFO | stdout | 5. 测试 build_demo 创建界面...
+2025-10-26 22:42:44 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:42:44 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:42:44 | INFO | stdout | 
+2025-10-26 22:42:44 | INFO | stdout | ✗ 测试失败: 'NoneType' object has no attribute 'shape'
+2025-10-26 22:42:44 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:42:44 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_gradio_fixes.py", line 32, in <module>
+2025-10-26 22:42:44 | ERROR | stderr |     demo = build_demo(models, None, None)
+2025-10-26 22:42:44 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:42:44 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 167, in build_demo
+2025-10-26 22:42:44 | ERROR | stderr |     referee_block.launch(c_chatbots)
+2025-10-26 22:42:44 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 410, in launch
+2025-10-26 22:42:44 | ERROR | stderr |     text_output = gr.HTML(self.reset()[1])
+2025-10-26 22:42:44 | ERROR | stderr |                           ^^^^^^^^^^^^
+2025-10-26 22:42:44 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 209, in reset
+2025-10-26 22:42:44 | ERROR | stderr |     back_h, back_w, _ = background.shape
+2025-10-26 22:42:44 | ERROR | stderr |                         ^^^^^^^^^^^^^^^^
+2025-10-26 22:42:44 | ERROR | stderr | AttributeError: 'NoneType' object has no attribute 'shape'
+2025-10-26 22:43:45 | INFO | stdout |    ✓ 成功
+2025-10-26 22:43:45 | INFO | stdout | 
+2025-10-26 22:43:45 | INFO | stdout | 2. 导入 gradio_block_arena_named...
+2025-10-26 22:43:45 | INFO | stdout |    ✓ 成功
+2025-10-26 22:43:45 | INFO | stdout | 
+2025-10-26 22:43:45 | INFO | stdout | 3. 导入 gradio_block_arena_anony...
+2025-10-26 22:43:45 | INFO | stdout |    ✓ 成功
+2025-10-26 22:43:45 | INFO | stdout | 
+2025-10-26 22:43:45 | INFO | stdout | 4. 导入 gradio_block_arena_referee...
+2025-10-26 22:43:45 | INFO | stdout |    ✓ 成功
+2025-10-26 22:43:45 | INFO | stdout | 
+2025-10-26 22:43:45 | INFO | stdout | 5. 测试 build_demo 创建界面...
+2025-10-26 22:43:45 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:43:45 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:43:45 | INFO | stdout | 
+2025-10-26 22:43:45 | INFO | stdout | ✗ 测试失败: name 'args' is not defined
+2025-10-26 22:43:45 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:43:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_gradio_fixes.py", line 32, in <module>
+2025-10-26 22:43:45 | ERROR | stderr |     demo = build_demo(models, None, None)
+2025-10-26 22:43:45 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:43:45 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 184, in build_demo
+2025-10-26 22:43:45 | ERROR | stderr |     if args.model_list_mode not in ["once", "reload"]:
+2025-10-26 22:43:45 | ERROR | stderr |        ^^^^
+2025-10-26 22:43:45 | ERROR | stderr | NameError: name 'args' is not defined
+2025-10-26 22:44:16 | INFO | stdout |    ✓ 成功
+2025-10-26 22:44:16 | INFO | stdout | 
+2025-10-26 22:44:16 | INFO | stdout | 2. 导入 gradio_block_arena_named...
+2025-10-26 22:44:16 | INFO | stdout |    ✓ 成功
+2025-10-26 22:44:16 | INFO | stdout | 
+2025-10-26 22:44:16 | INFO | stdout | 3. 导入 gradio_block_arena_anony...
+2025-10-26 22:44:16 | INFO | stdout |    ✓ 成功
+2025-10-26 22:44:16 | INFO | stdout | 
+2025-10-26 22:44:16 | INFO | stdout | 4. 导入 gradio_block_arena_referee...
+2025-10-26 22:44:16 | INFO | stdout |    ✓ 成功
+2025-10-26 22:44:16 | INFO | stdout | 
+2025-10-26 22:44:16 | INFO | stdout | 5. 测试 build_demo 创建界面...
+2025-10-26 22:44:16 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:44:16 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:44:16 | INFO | stdout | 
+2025-10-26 22:44:16 | INFO | stdout | ✗ 测试失败: 'NoneType' object has no attribute 'model_list_mode'
+2025-10-26 22:44:16 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:44:16 | ERROR | stderr |   File "/Users/ztz/TAMJ/test_gradio_fixes.py", line 32, in <module>
+2025-10-26 22:44:16 | ERROR | stderr |     demo = build_demo(models, None, None)
+2025-10-26 22:44:16 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:44:16 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 184, in build_demo
+2025-10-26 22:44:16 | ERROR | stderr |     if args.model_list_mode not in ["once", "reload"]:
+2025-10-26 22:44:16 | ERROR | stderr |        ^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:44:16 | ERROR | stderr | AttributeError: 'NoneType' object has no attribute 'model_list_mode'
+2025-10-26 22:44:33 | INFO | stdout |    ✓ 成功
+2025-10-26 22:44:33 | INFO | stdout | 
+2025-10-26 22:44:33 | INFO | stdout | 2. 导入 gradio_block_arena_named...
+2025-10-26 22:44:33 | INFO | stdout |    ✓ 成功
+2025-10-26 22:44:33 | INFO | stdout | 
+2025-10-26 22:44:33 | INFO | stdout | 3. 导入 gradio_block_arena_anony...
+2025-10-26 22:44:33 | INFO | stdout |    ✓ 成功
+2025-10-26 22:44:33 | INFO | stdout | 
+2025-10-26 22:44:33 | INFO | stdout | 4. 导入 gradio_block_arena_referee...
+2025-10-26 22:44:33 | INFO | stdout |    ✓ 成功
+2025-10-26 22:44:33 | INFO | stdout | 
+2025-10-26 22:44:33 | INFO | stdout | 5. 测试 build_demo 创建界面...
+2025-10-26 22:44:33 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:44:33 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:44:33 | INFO | stdout |    ✓ 成功创建 Gradio 界面
+2025-10-26 22:44:33 | INFO | stdout | 
+2025-10-26 22:44:33 | INFO | stdout | ============================================================
+2025-10-26 22:44:33 | INFO | stdout | 🎉 所有 Gradio API 兼容性测试通过！
+2025-10-26 22:44:33 | INFO | stdout | ============================================================
+2025-10-26 22:44:33 | INFO | stdout | 
+2025-10-26 22:44:33 | INFO | stdout | 可以启动 Web Server 了：
+2025-10-26 22:44:33 | INFO | stdout |   python -m fastchat.serve.gradio_web_server_multi
+2025-10-26 22:46:46 | INFO | gradio_web_server | Models: ['ChatMusician', 'fastchat-t5-3b-v1.0']
+2025-10-26 22:46:46 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:46:46 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:46:46 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:46:46 | ERROR | stderr |   File "<frozen runpy>", line 198, in _run_module_as_main
+2025-10-26 22:46:46 | ERROR | stderr |   File "<frozen runpy>", line 88, in _run_code
+2025-10-26 22:46:46 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 283, in <module>
+2025-10-26 22:46:46 | ERROR | stderr |     demo = build_demo(models, args.elo_results_file, args.leaderboard_table_file)
+2025-10-26 22:46:46 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:46:46 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 167, in build_demo
+2025-10-26 22:46:46 | ERROR | stderr |     referee_block.launch(c_chatbots)
+2025-10-26 22:46:46 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 365, in launch
+2025-10-26 22:46:46 | ERROR | stderr |     role_description = self.get_display_role_html()
+2025-10-26 22:46:46 | ERROR | stderr |                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:46:46 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 77, in get_display_role_html
+2025-10-26 22:46:46 | ERROR | stderr |     avatar = self.get_avatar(agent_id)
+2025-10-26 22:46:46 | ERROR | stderr |              ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:46:46 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 116, in get_avatar
+2025-10-26 22:46:46 | ERROR | stderr |     base64_str = cv2.imencode(".png", img)[1].tostring()
+2025-10-26 22:46:46 | ERROR | stderr |                  ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 22:46:46 | ERROR | stderr | cv2.error: OpenCV(4.12.0) /Users/xperience/GHA-Actions-OpenCV/_work/opencv-python/opencv-python/opencv/modules/imgcodecs/src/loadsave.cpp:1596: error: (-215:Assertion failed) !_img.empty() in function 'imencodeWithMetadata'
+2025-10-26 22:46:46 | ERROR | stderr | 
+2025-10-26 22:58:35 | INFO | gradio_web_server | Models: ['ChatMusician', 'fastchat-t5-3b-v1.0']
+2025-10-26 22:58:35 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:58:35 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:58:35 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:58:35 | ERROR | stderr |   File "<frozen runpy>", line 198, in _run_module_as_main
+2025-10-26 22:58:35 | ERROR | stderr |   File "<frozen runpy>", line 88, in _run_code
+2025-10-26 22:58:35 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 284, in <module>
+2025-10-26 22:58:35 | ERROR | stderr |     demo.queue(
+2025-10-26 22:58:35 | ERROR | stderr | TypeError: Blocks.queue() got an unexpected keyword argument 'concurrency_count'
+2025-10-26 22:59:09 | INFO | gradio_web_server | Models: ['ChatMusician', 'fastchat-t5-3b-v1.0']
+2025-10-26 22:59:09 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 22:59:09 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 22:59:09 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 22:59:09 | ERROR | stderr |   File "<frozen runpy>", line 198, in _run_module_as_main
+2025-10-26 22:59:09 | ERROR | stderr |   File "<frozen runpy>", line 88, in _run_code
+2025-10-26 22:59:09 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_web_server_multi.py", line 284, in <module>
+2025-10-26 22:59:09 | ERROR | stderr |     demo.queue(
+2025-10-26 22:59:09 | ERROR | stderr | TypeError: Blocks.queue() got an unexpected keyword argument 'concurrency_count'
+2025-10-26 23:00:41 | INFO | gradio_web_server | Models: ['ChatMusician', 'fastchat-t5-3b-v1.0']
+2025-10-26 23:00:41 | ERROR | stderr | /Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_named.py:344: UserWarning: The 'tuples' format for chatbot messages is deprecated and will be removed in a future version of Gradio. Please set type='messages' instead, which uses openai-style 'role' and 'content' keys.
+2025-10-26 23:00:41 | ERROR | stderr |   chatbots[i] = gr.Chatbot(
+2025-10-26 23:00:41 | INFO | stdout | * Running on local URL:  http://0.0.0.0:7860
+2025-10-26 23:00:41 | INFO | stdout | * To create a public link, set `share=True` in `launch()`.
+2025-10-26 23:02:01 | ERROR | stderr | Traceback (most recent call last):
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/queueing.py", line 759, in process_events
+2025-10-26 23:02:01 | ERROR | stderr |     response = await route_utils.call_process_api(
+2025-10-26 23:02:01 | ERROR | stderr |                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/route_utils.py", line 354, in call_process_api
+2025-10-26 23:02:01 | ERROR | stderr |     output = await app.get_blocks().process_api(
+2025-10-26 23:02:01 | ERROR | stderr |              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/blocks.py", line 2116, in process_api
+2025-10-26 23:02:01 | ERROR | stderr |     result = await self.call_function(
+2025-10-26 23:02:01 | ERROR | stderr |              ^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/blocks.py", line 1635, in call_function
+2025-10-26 23:02:01 | ERROR | stderr |     prediction = await utils.async_iteration(iterator)
+2025-10-26 23:02:01 | ERROR | stderr |                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/utils.py", line 760, in async_iteration
+2025-10-26 23:02:01 | ERROR | stderr |     return await anext(iterator)
+2025-10-26 23:02:01 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/utils.py", line 751, in __anext__
+2025-10-26 23:02:01 | ERROR | stderr |     return await anyio.to_thread.run_sync(
+2025-10-26 23:02:01 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/anyio/to_thread.py", line 56, in run_sync
+2025-10-26 23:02:01 | ERROR | stderr |     return await get_async_backend().run_sync_in_worker_thread(
+2025-10-26 23:02:01 | ERROR | stderr |            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 2485, in run_sync_in_worker_thread
+2025-10-26 23:02:01 | ERROR | stderr |     return await future
+2025-10-26 23:02:01 | ERROR | stderr |            ^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/anyio/_backends/_asyncio.py", line 976, in run
+2025-10-26 23:02:01 | ERROR | stderr |     result = context.run(func, *args)
+2025-10-26 23:02:01 | ERROR | stderr |              ^^^^^^^^^^^^^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/utils.py", line 734, in run_sync_iterator_async
+2025-10-26 23:02:01 | ERROR | stderr |     return next(iterator)
+2025-10-26 23:02:01 | ERROR | stderr |            ^^^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/utils.py", line 898, in gen_wrapper
+2025-10-26 23:02:01 | ERROR | stderr |     response = next(iterator)
+2025-10-26 23:02:01 | ERROR | stderr |                ^^^^^^^^^^^^^^
+2025-10-26 23:02:01 | ERROR | stderr |   File "/Users/ztz/TAMJ/FastChat/fastchat/serve/gradio_block_arena_referee.py", line 130, in start_autoplay
+2025-10-26 23:02:01 | ERROR | stderr |     self.backend.agents[agent_id].source_text = c_chatbot1[-1][0]
+2025-10-26 23:02:01 | ERROR | stderr |                                                 ~~~~~~~~~~^^^^
+2025-10-26 23:02:01 | ERROR | stderr | IndexError: list index out of range
+2025-10-26 23:02:07 | ERROR | stderr | /opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/blocks.py:1816: UserWarning: A function (clear_history) returned too many output values (needed: 7, returned: 11). Ignoring extra values.
+2025-10-26 23:02:07 | ERROR | stderr |     Output components:
+2025-10-26 23:02:07 | ERROR | stderr |         [state, state, chatbot, chatbot, textbox, button, button]
+2025-10-26 23:02:07 | ERROR | stderr |     Output values returned:
+2025-10-26 23:02:07 | ERROR | stderr |         [None, None, None, None, "", {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}]
+2025-10-26 23:02:07 | ERROR | stderr |   warnings.warn(
+2025-10-26 23:02:07 | ERROR | stderr | /opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/blocks.py:1816: UserWarning: A function (clear_history) returned too many output values (needed: 7, returned: 11). Ignoring extra values.
+2025-10-26 23:02:07 | ERROR | stderr |     Output components:
+2025-10-26 23:02:07 | ERROR | stderr |         [state, state, chatbot, chatbot, textbox, button, button]
+2025-10-26 23:02:07 | ERROR | stderr |     Output values returned:
+2025-10-26 23:02:07 | ERROR | stderr |         [None, None, None, None, "", {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}]
+2025-10-26 23:02:07 | ERROR | stderr |   warnings.warn(
+2025-10-26 23:02:10 | ERROR | stderr | /opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/blocks.py:1816: UserWarning: A function (clear_history) returned too many output values (needed: 7, returned: 11). Ignoring extra values.
+2025-10-26 23:02:10 | ERROR | stderr |     Output components:
+2025-10-26 23:02:10 | ERROR | stderr |         [state, state, chatbot, chatbot, textbox, button, button]
+2025-10-26 23:02:10 | ERROR | stderr |     Output values returned:
+2025-10-26 23:02:10 | ERROR | stderr |         [None, None, None, None, "", {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}]
+2025-10-26 23:02:10 | ERROR | stderr |   warnings.warn(
+2025-10-26 23:02:11 | ERROR | stderr | /opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/blocks.py:1816: UserWarning: A function (clear_history) returned too many output values (needed: 7, returned: 11). Ignoring extra values.
+2025-10-26 23:02:11 | ERROR | stderr |     Output components:
+2025-10-26 23:02:11 | ERROR | stderr |         [state, state, chatbot, chatbot, textbox, button, button]
+2025-10-26 23:02:11 | ERROR | stderr |     Output values returned:
+2025-10-26 23:02:11 | ERROR | stderr |         [None, None, None, None, "", {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}]
+2025-10-26 23:02:11 | ERROR | stderr |   warnings.warn(
+2025-10-26 23:03:02 | ERROR | stderr | /opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/blocks.py:1816: UserWarning: A function (clear_history) returned too many output values (needed: 7, returned: 11). Ignoring extra values.
+2025-10-26 23:03:02 | ERROR | stderr |     Output components:
+2025-10-26 23:03:02 | ERROR | stderr |         [state, state, chatbot, chatbot, textbox, button, button]
+2025-10-26 23:03:02 | ERROR | stderr |     Output values returned:
+2025-10-26 23:03:02 | ERROR | stderr |         [None, None, None, None, "", {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}]
+2025-10-26 23:03:02 | ERROR | stderr |   warnings.warn(
+2025-10-26 23:03:02 | ERROR | stderr | /opt/anaconda3/envs/tamj/lib/python3.11/site-packages/gradio/blocks.py:1816: UserWarning: A function (clear_history) returned too many output values (needed: 7, returned: 11). Ignoring extra values.
+2025-10-26 23:03:02 | ERROR | stderr |     Output components:
+2025-10-26 23:03:02 | ERROR | stderr |         [state, state, chatbot, chatbot, textbox, button, button]
+2025-10-26 23:03:02 | ERROR | stderr |     Output values returned:
+2025-10-26 23:03:02 | ERROR | stderr |         [None, None, None, None, "", {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}, {'interactive': False, '__type__': 'update'}]
+2025-10-26 23:03:02 | ERROR | stderr |   warnings.warn(
+2025-10-26 23:03:34 | INFO | stdout | Keyboard interruption in main thread... closing server.
